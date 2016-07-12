@@ -24,6 +24,8 @@
                   = link_to 'All', :page_size => @projects.total_count, :episode => params[:episode]
             .col-sm-6
               %ul.nav.nav-pills.pull-right
+                %li{role: 'presentation'}
+                  = link_to 'Export', :page_size => params[:page_size], :episode => params[:episode], :format => "csv"
                 %li{role: "presentation"}
                   = link_to 'Type:', '#', style: 'pointer-events: none; cursor: default;', class: 'text-muted'
                 %li.active#all-pill

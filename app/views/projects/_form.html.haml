@@ -29,7 +29,9 @@
           #loading-spinner
             = fa_icon 'spinner pulse 3x'
           #preview-contents.hidden
-
+  .form-group
+    = f.label("Demo video URL (mp4 or embed link)")
+    = f.text_field :demo_url, placeholder: 'Demo Video URL', class: 'form-control input-lg'
   .form-group
     = f.label(:avatar)
     = f.file_field :avatar

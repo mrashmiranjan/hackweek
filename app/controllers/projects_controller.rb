@@ -15,31 +15,44 @@ class ProjectsController < ApplicationController
     respond_to do |format|
       format.html { render }
       format.rss { render :layout => false }
+      format.csv { render text: @projects.to_csv }
     end
   end
 
   # GET /projects/popular
   def popular
     @projects = Project.current(@episode).liked.includes(:originator, :users, :kudos).order('likes_count DESC').page(params[:page]).per(params[:page_size])
-    render 'index'
+    respond_to do |format|
+      format.html { render 'index'}
+      format.csv { render text: @projects.to_csv }
+    end
   end
 
   # GET /projects/archived
   def archived
     @projects = Project.current(@episode).archived.includes(:originator, :users, :kudos).page(params[:page]).per(params[:page_size])
-    render 'index'
+    respond_to do |format|
+      format.html { render 'index'}
+      format.csv { render text: @projects.to_csv }
+    end
   end
 
   # GET /projects/biggest
   def biggest
     @projects = Project.current(@episode).populated.includes(:originator, :users, :kudos).order('memberships_count DESC').page(params[:page]).per(params[:page_size])
-    render 'index'
+    respond_to do |format|
+      format.html { render 'index'}
+      format.csv { render text: @projects.to_csv }
+    end
   end
 
   # GET /projects/finished
   def finished
     @projects = Project.current(@episode).finished.includes(:originator, :users, :kudos).page(params[:page]).per(params[:page_size])
-    render 'index'
+    respond_to do |format|
+      format.html { render 'index'}
+      format.csv { render text: @projects.to_csv }
+    end
   end
 
   # GET /projects/1
@@ -196,7 +209,7 @@ class ProjectsController < ApplicationController
   private
 
     def project_params
-      params.require(:project).permit(:description, :title, :avatar)
+      params.require(:project).permit(:description, :title, :avatar, :demo_url)
     end
 
     def keyword_params

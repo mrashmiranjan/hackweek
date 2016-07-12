@@ -160,9 +160,35 @@ class Project < ActiveRecord::Base
   def next(episode = nil)
     Project.by_episode(episode).where('projects.id > ?', self.id).first
   end
+  
+  def self.to_csv_old
+    CSV.generate do |csv|
+      csv << column_names
+      all.each do |project|
+        csv << project.attributes.values_at(*column_names)
+      end
+    end
+  end
+    
+  def self.to_csv
+    CSV.generate do |csv|
+      csv << ["ID","Title","Type","Originator", "Members"]
+      all.each do |project|
+        usernames=""
+        if project.users.empty?
+          usernames=""
+        else
+          project.users.each do |user|
+            usernames = usernames + " " + user.name;
+          end
+        end
+        csv << [project.id, project.title, project.aasm_state, project.originator.name, usernames]
+      end
+    end
+  end
 
   private
-
+  
     def create_initial_update
       Update.create!(author: self.originator,
                      text: 'originated',

@@ -29,6 +29,12 @@
   .col-sm-8.project-style
     :markdown
       #{@project.description}
+    - if @project.demo_url
+      - if @project.demo_url.end_with? ".mp4"
+        %video{:width => "700", :height => "400", :controls => ""}
+          %source{:src => "#{@project.demo_url}", :type => "video/mp4"}
+      - else
+        %iframe{:width => "700", :height => "400", :frameborder => "0", :src => "#{@project.demo_url}"}
   .col-sm-4
     .row
       .col-sm-12
