@@ -63,6 +63,10 @@ rspec spec
 ## Requirements
 Sphinx (searchd) should be installed. No need to configure and launch it separately, everything will be taken care of with `rake ts:regenerate`.
 
+Mysql/mariadb should be installed and service should be running. If you have non-empty superadmin(root) password for the DB, you need to specify the same in config/database.yml
+
+If you want to send mails on addition of a comment, please refer config/application.yml and do the configurations.
+
 
 # Development with Vagrant
 

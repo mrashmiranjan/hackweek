@@ -10,3 +10,22 @@ HACKWEEK_DEVISE_SECRET_KEY: '12345'
 # Errbit (https://github.com/errbit/errbit) configuration
 # HACKWEEK_ERRBIT_API_KEY: '12345' 
 # HACKWEEK_ERRBIT_HOST: errbit.example.com
+
+# E-mail configuration
+# If you are enabling sending of email, please ensure that you specify ADMIN_EMAIL_ADDRESS and SMTP_SERVER_ADDR
+# Note that if SEND_EMAIL_ON_COMMENT is specified as 'true', email will be sent. Any other value means mail wont be sent
+#SEND_EMAIL_ON_COMMENT_ADD: 'true'
+
+# Specify an email address which will be used in the "From" field of the mail. Need not be a valid one.
+ADMIN_EMAIL_ADDRESS: 'hackfest-admin@microfocus.com'
+
+# You can run a postfix server and provide the hostname/IP of the system here. 
+# Use localhost if postfix is running on same system as rails server 
+SMTP_SERVER_ADDR: 'localhost'
+
+# Uncomment and specify the port only if using non-default port. Default port is 25
+#SMTP_SERVER_PORT: '25'
+
+# Uncomment and specify only if SMTP server needs authentication
+#SMTP_USER: 'NA'
+#SMTP_PASSWORD: 'NA'
