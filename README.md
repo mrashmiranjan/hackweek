@@ -8,6 +8,7 @@ A tool to nurture hack ideas into projects and then collaborate on them. It's us
 during [SUSEs hackweek](http://hackweek.suse.com), a week where SUSE engineers can
 experiment without limits and get their opportunity to innovate, collaborate across teams,
 and learn.
+SOmething
 
 <img src="https://raw.github.com/SUSE/hackweek/master/design/screenshot.png">
 
